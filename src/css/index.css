@@ -29,7 +29,7 @@ body {
   background-color: var(--lightgray);
   /* background-color: var(--four); */
 
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 button {
@@ -105,6 +105,11 @@ button:focus {
   /* color: var(--three); */
   margin-top: 20px;
   z-index: 10;
+  cursor: pointer;
+}
+
+.side-menu:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 .menu-bar {
@@ -112,12 +117,17 @@ button:focus {
   color: rgba(255, 255, 255, 0.9);
   /* color: var(--three); */
   font-size: 15px;
+  cursor: pointer;
+}
+
+.menu-bar:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 .side-menu > i {
   margin-right: 7px;
   /* color: rgba(0, 0, 0, 0.6); */
-  color: rgba(255, 255, 255, 0.8);
+  /* color: rgba(255, 255, 255, 0.8); */
   /* color: var(--three); */
 }
 
@@ -192,7 +202,7 @@ button:focus {
 .generator-button-container {
   width: 100%;
   height: 60px;
-  position: relative;
+  /* position: relative; */
 }
 
 .generator-button {
@@ -222,6 +232,9 @@ button:focus {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  margin-left: 33vh;
+  transform: translate(0%, 0%);
 }
 /*=============================== */
 
