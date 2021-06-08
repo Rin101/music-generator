@@ -69,6 +69,10 @@ button:focus {
   cursor: default;
 }
 
+.top-image h1 {
+  cursor: default;
+}
+
 .thin-line {
   height: 1px;
   background-color: var(--three);
