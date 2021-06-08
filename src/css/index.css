@@ -65,6 +65,8 @@ button:focus {
   align-items: center;
   color: rgba(255, 255, 255, 0.8);
   font-size: 30px;
+
+  cursor: default;
 }
 
 .thin-line {
