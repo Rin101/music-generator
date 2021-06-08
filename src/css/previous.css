@@ -1,0 +1,114 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* color palette */
+:root {
+  --layer1: #022b3a;
+  --layer2: #1f7a8c;
+  --layer3: #bfdbf7;
+  --layer4: #e1e5f2;
+  --layer5: #ffffff;
+  /* material-ui */
+  --primary: #1976d2;
+  --secondary: #dc004e;
+  /* figma */
+  --figma1: #0997e3;
+  --figma2: #12becc;
+  --figma3: #09d976;
+  --figma4: #636363;
+  --figma5: #ff6584;
+}
+
+/* ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+
+  background-image: linear-gradient(
+    0deg,
+    rgba(247, 247, 247, 1) 23.8%,
+    rgba(252, 221, 221, 1) 92%
+  );
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  border: none;
+  background-color: #fff;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* =============================================== */
+
+.music-player {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 20px 20px 0 rgba(252, 169, 169, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 30px;
+  margin: 100px 0;
+  position: relative;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-btn {
+  color: #dfdbdf;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 20px;
+}
+
+.action-btn-big {
+  color: #cdc2d0;
+  font-size: 30px;
+}
+
+.progress-container {
+  background-color: #dfdbdf;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 15px 0 5px 0;
+  height: 3px;
+  width: 100%;
+}
+
+.progress {
+  background-color: #fe8daa;
+  border-radius: 6px;
+  height: 100%;
+  width: 80%;
+  transition: width 0.1s linear;
+}
+
+.like-unlike {
+  position: absolute;
+  color: #fe8daa;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  top: 10%;
+  right: 10%;
+}
