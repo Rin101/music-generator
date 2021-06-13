@@ -51,27 +51,6 @@ export function MusicPlayer(props) {
 
     }
 
-    // ====================================================-
-
-    // const ring = (song) => {
-
-    //     let bpm = Math.floor(Math.random() * (150 - 80) + 80)
-    //     Tone.Transport.bpm.value = bpm
-        
-    //     let i = 0
-    //     let timeSum = 0
-    //     while (i < song.length && playpause.current.className == "play-pause play") {
-    //         if (song[i][0] != "rest") {
-    //             synth.triggerAttackRelease(song[i][0], (bpmCalc(bpm))*song[i][1], now+timeSum)
-    //             // sampler.triggerAttackRelease(song[i][0], (bpmCalc(bpm))*song[i][1], now+timeSum)
-    //         }
-    //         timeSum += (bpmCalc(bpm))*song[i][1]
-    //         i += 1
-    //     }
-
-    // }
-
-    // ===========implementing play pause function=======
 
     function playSong(song) {
         const now = Tone.now()
