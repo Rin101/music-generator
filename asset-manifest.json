@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/music-generator/static/css/main.44f2822f.chunk.css",
-    "main.js": "/music-generator/static/js/main.691c465c.chunk.js",
-    "main.js.map": "/music-generator/static/js/main.691c465c.chunk.js.map",
+    "main.js": "/music-generator/static/js/main.928bb943.chunk.js",
+    "main.js.map": "/music-generator/static/js/main.928bb943.chunk.js.map",
     "runtime-main.js": "/music-generator/static/js/runtime-main.91eb1a76.js",
     "runtime-main.js.map": "/music-generator/static/js/runtime-main.91eb1a76.js.map",
     "static/js/2.3ef52d1b.chunk.js": "/music-generator/static/js/2.3ef52d1b.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.91eb1a76.js",
     "static/js/2.3ef52d1b.chunk.js",
     "static/css/main.44f2822f.chunk.css",
-    "static/js/main.691c465c.chunk.js"
+    "static/js/main.928bb943.chunk.js"
   ]
 }
