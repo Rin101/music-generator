@@ -15,7 +15,6 @@ export function MusicPlayer(props) {
     // progressBar.style.width = progressPercent
     // ================================================
     const synth = new Tone.Synth().toDestination()
-    const now = Tone.now()
 
     const sampler = new Tone.Sampler({
         urls: {
@@ -25,11 +24,11 @@ export function MusicPlayer(props) {
         baseUrl: "https://tonejs.github.io/audio/casio/",
     }).toDestination();
     
-    const checkSound = () => {
-        // synth.triggerAttackRelease("8n", 1)
-        sampler.triggerAttackRelease("C3", "8n", now)
-        sampler.triggerAttackRelease("C4", "8n", now+1)
-    }
+    // const checkSound = () => {
+    //     // synth.triggerAttackRelease("8n", 1)
+    //     sampler.triggerAttackRelease("C3", "8n", now)
+    //     sampler.triggerAttackRelease("C4", "8n", now+1)
+    // }
 
     // ===================================================-
    
@@ -54,45 +53,47 @@ export function MusicPlayer(props) {
 
     // ====================================================-
 
-    const ring = (song) => {
+    // const ring = (song) => {
 
-        let bpm = Math.floor(Math.random() * (150 - 80) + 80)
-        Tone.Transport.bpm.value = bpm
+    //     let bpm = Math.floor(Math.random() * (150 - 80) + 80)
+    //     Tone.Transport.bpm.value = bpm
         
-        let i = 0
-        let timeSum = 0
-        while (i < song.length && playpause.current.className == "play-pause play") {
-            if (song[i][0] != "rest") {
-                synth.triggerAttackRelease(song[i][0], (bpmCalc(bpm))*song[i][1], now+timeSum)
-                // sampler.triggerAttackRelease(song[i][0], (bpmCalc(bpm))*song[i][1], now+timeSum)
-            }
-            timeSum += (bpmCalc(bpm))*song[i][1]
-            i += 1
-        }
+    //     let i = 0
+    //     let timeSum = 0
+    //     while (i < song.length && playpause.current.className == "play-pause play") {
+    //         if (song[i][0] != "rest") {
+    //             synth.triggerAttackRelease(song[i][0], (bpmCalc(bpm))*song[i][1], now+timeSum)
+    //             // sampler.triggerAttackRelease(song[i][0], (bpmCalc(bpm))*song[i][1], now+timeSum)
+    //         }
+    //         timeSum += (bpmCalc(bpm))*song[i][1]
+    //         i += 1
+    //     }
 
-    }
+    // }
 
     // ===========implementing play pause function=======
 
     function playSong(song) {
+        const now = Tone.now()
+
         playpause.current.classList.add("playing")
         playpause.current.querySelector("i.fas").classList.remove("fa-play")
         playpause.current.querySelector("i.fas").classList.add("fa-pause")
 
-        let bpm = Math.floor(Math.random() * (150 - 80) + 80)
+        let bpm = song["bpm"]
         Tone.Transport.bpm.value = bpm
         let i = 0
         let timeSum = 0
-        while (i < song.length && playpause.current.classList.contains("playing")) {
-            if (song[i][0] != "rest") {
-                synth.triggerAttackRelease(song[i][0], (bpmCalc(bpm))*song[i][1], now+timeSum)
+        while (i < song["song"].length && playpause.current.classList.contains("playing")) {
+            if (song["song"][i][0] != "rest") {
+                synth.triggerAttackRelease(song["song"][i][0], (bpmCalc(bpm))*song["song"][i][1], now+timeSum)
                 // sampler.triggerAttackRelease(song[i][0], (bpmCalc(bpm))*song[i][1], now+timeSum)
             } 
-            timeSum += (bpmCalc(bpm))*song[i][1]
+            timeSum += (bpmCalc(bpm))*song["song"][i][1]
             i += 1
         }
         // while (playpause.current.classList.contains("playing")) {
-            // song.map(s => {
+            // song["song"].map(s => {
             //     synth.triggerAttackRelease(s[0], (bpmCalc(bpm))*s[1], now+timeSum)
             //     timeSum += (bpmCalc(bpm))*s[1]
             // })

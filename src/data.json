@@ -1,0 +1,13 @@
+{
+    "custom-settings" : {
+        "bpm": "",
+        "length (number of bars)": "",
+        "scale": "",
+        "selectedNotes": [],
+        "key": "",
+        "note range": "",
+        "number of unique notes" : "",
+        "maximum of sound difference" : "",
+        "rest" : "boolean"
+    } 
+}

@@ -2,39 +2,25 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import * as Tone from 'tone';
 //  import from file
-import { getGeneratedList } from './randomNotes';
+import { createSong } from './createSong';
 import { MusicPlayer } from './music-player'
+import { Settings } from './settings'
 // material-ui
 import Button from '@material-ui/core/Button'
-
 
 // ---------
 
 export function Generator() {
 
     const [createdSongs, setCreatedList] = useState([])
-    const [customSettings, setCustomSettings] = useState({"length": "4", "scale": ["majorScale","C"], "rest": false})
+    const [customSettings, setCustomSettings] = useState({
+        "length": "4", "scale": "None", "key": "None", "rest": false, "bpm": "None", "selectedNotes": "None"
+    })
 
-    const mouseCursor = useRef()
-    const settingCard = useRef()
-    const selectors = useRef()
-    const applySettingsButton = useRef()
-    const selectScale = useRef()
-    const selectKey = useRef()
 
-    const createSong = (customSettings) => {
-
-        let randomBpm = Math.floor(Math.random() * (150 - 70) + 70)
-        Tone.Transport.bpm.value = randomBpm
-
-        let theList = getGeneratedList(customSettings)
-        if (createdSongs === undefined || createdSongs.length == 0) {
-            setCreatedList([theList])   
-        } else {
-            setCreatedList([theList, ...createdSongs])
-            console.log(createdSongs)
-        }
-        console.log(createdSongs)
+    const generateSong = (customSettings) => {
+        const song = createSong(customSettings)
+        setCreatedList([song, ...createdSongs])
     }
 
     const MusicPlayers = () => {
@@ -42,44 +28,16 @@ export function Generator() {
             return (
                 createdSongs.map(song => {
                     return (
-                        <MusicPlayer song={song} key={song}></MusicPlayer>
+                        <MusicPlayer song={song} key={song.song}></MusicPlayer>
             )}))
         } else {
             return null
         }
     }
 
-    const cursor = (e) => {
-        mouseCursor.current.style.display = "block"
-        mouseCursor.current.style.top = e.pageY + "px"
-        mouseCursor.current.style.left = e.pageX + "px"
-    }
-
-    const hideCursor = () => {
-        mouseCursor.current.style.display = "none"
-    }
-
-    const showSelectors = () => {
-        settingCard.current.style.display = "none"
-        selectors.current.style.display = "flex"
-    }
-
-    const applySettings = () => {
-        let list = [selectScale.current.value, selectKey.current.value]
-        let arr = ["scale", "key"]
-        let defaultValue = ["majorScale", "C"]
-        let i = 0
-        while (i < arr.length) {
-            arr[i] = (list[i] != "None") ? list[i] : defaultValue[i]
-            i += 1
-        }
-        setCustomSettings({"scale": [selectScale.current.value, selectKey.current.value]})
-    }
-
     return (
         <div className="generator">
 
-            <div ref={ mouseCursor } className="cursor"></div>
             <section className="top-image">
                 <h1>Music Genarator AI</h1>
             </section>
@@ -116,12 +74,12 @@ export function Generator() {
                 {/* <div className="empty-side-bar"></div> */}
 
                 <div className="music">
-                    <div className="generator-button-container" onClick={() => createSong(customSettings)}>
-                        <Button variant="contained" className="generator-button">
+                    <div className="generator-button-container">
+                        <Button variant="contained" className="generator-button" onClick={() => generateSong(customSettings)}>
                             GENERATE
                         </Button>
                     </div>
-                    {/* <div className="generator-button-container" onClick={() => createSong()}>
+                    {/* <div className="generator-button-container" onClick={() => generateSong()}>
                         <Button variant="contained" className="generator-button2">
                             GENERATE
                         </Button>
@@ -132,43 +90,11 @@ export function Generator() {
                     </div>
                 </div>
 
-                <div className="custom-settings">
-                    <div className="setting-card" ref={settingCard} onMouseMove={(e) => cursor(e)} onMouseLeave={() => hideCursor()} onClick={() => showSelectors()}>
-                        <i className="fas fa-cog"></i>
-                    </div>
-                    <div ref={selectors} className="selectors" onMouseMove={(e) => cursor(e)} onMouseLeave={() => hideCursor()}>
-                        <label>scale : </label>
-                        <select ref={ selectScale } name="scale" id="scale">
-                            <option value="None">None</option>
-                            <option value="Major">Major</option>
-                            <option value="Minor">Minor</option>
-                            <option value="Major Pentatonic">Major Pentatonic</option>
-                            <option value="Minor Pentatonic">Minor Pentatonic</option>
-                        </select>
-                        <label>key : </label>
-                        <select ref={ selectKey } name="key" id="key">
-                            <option value="None">None</option>
-                            <option value="C">C</option>
-                            <option value="C#">C#</option>
-                            <option value="D">D</option>
-                            <option value="D#">D#</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                            <option value="F#">F#</option>
-                            <option value="G">G</option>
-                            <option value="G#">G#</option>
-                            <option value="A">A</option>
-                            <option value="A#">A#</option>
-                            <option value="B">B</option>
-                        </select>
-
-                        <div ref={ applySettingsButton } className="apply-settings" onClick={() => applySettings()}>
-                            <p><i className="fas fa-sliders-h"></i> apply settings</p>
-                        </div>
-                    </div>
+                <div className="settings-container">
+                    <Settings customSettings={customSettings} setCustomSettings={setCustomSettings}></Settings>
                 </div>
+  
             </section>
-
         </div>
     )
 
