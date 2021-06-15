@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 export function MusicPlayer(props) {
 
     const playpause = useRef()
+    const item = useRef()
     // create these functions in different js file
     const progressContainer = useRef()
     const progressBar = useRef()
@@ -130,7 +131,7 @@ export function MusicPlayer(props) {
 
 
     return (
-        <div className="music-player-item">
+        <div className="music-player-item" ref={ item }>
             <div className="music-player">
                 <div className="play-pause-container">
                     <div className="play-pause" ref={ playpause } onClick={() => playPause(props.song)}>

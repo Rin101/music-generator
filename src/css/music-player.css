@@ -16,6 +16,7 @@
 
 .music-player-item {
   display: flex;
+  animation: slidein 0.3s ease-in-out;
 }
 
 /* ==================================== */
@@ -114,4 +115,18 @@
 
 .song-details i {
   color: var(--three);
+}
+
+/* ============================================- */
+
+@keyframes slidein {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
