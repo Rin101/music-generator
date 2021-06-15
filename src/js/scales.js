@@ -13,7 +13,12 @@ const notes = [
 // ]
 
 const scales = {
-    "majorScale": [0, 2, 4, 5, 7, 9, 11]
+    "majorScale": [0, 2, 4, 5, 7, 9, 11],
+    "minorScale": [0, 2, 3, 5, 7, 8, 10],
+    "majorPentatonic": [0, 2, 4, 7, 9],
+    "minorPentatonic": [0, 3, 5, 7, 10],
+    "harmonicMinor": [0, 2, 3, 5, 7, 8, 11],
+    "harmonicMajor": [0, 2, 4, 5, 7, 8, 11]
 }
 
 // ex: getScale("majorScale", "C", [2, 4])

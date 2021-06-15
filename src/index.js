@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // css
-// import './css/index.css';
-import "./css/beforemovement.css"
+import './css/index.css';
+// import "./css/beforemovement.css"
 import './css/music-player.css';
 import './css/media-query.css';
 //  import from file

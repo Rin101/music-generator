@@ -130,17 +130,22 @@ export function MusicPlayer(props) {
 
 
     return (
-        <div className="music-player">
-            <div className="play-pause-container">
-                <div className="play-pause" ref={ playpause } onClick={() => playPause(props.song)}>
-                    <button className="play-pause-button"><i className="fas fa-play"></i></button>
-                    {/* <button className="play-pause play" ref={ playpause } onClick={() => ring(props.song)}><i className="fas fa-play"></i></button> */}
+        <div className="music-player-item">
+            <div className="music-player">
+                <div className="play-pause-container">
+                    <div className="play-pause" ref={ playpause } onClick={() => playPause(props.song)}>
+                        <button className="play-pause-button"><i className="fas fa-play"></i></button>
+                        {/* <button className="play-pause play" ref={ playpause } onClick={() => ring(props.song)}><i className="fas fa-play"></i></button> */}
+                    </div>
                 </div>
+                <div className="progress-container" ref={ progressContainer } onClick={(e) => setProgress(e.target.clientWidth, e.target.offsetX)}>
+                    <div className="progress" ref={ progressBar }></div>
+                </div>
+                <button className="like-unlike unliked"><i className="far fa-heart"></i></button>
             </div>
-            <div className="progress-container" ref={ progressContainer } onClick={(e) => setProgress(e.target.clientWidth, e.target.offsetX)}>
-                <div className="progress" ref={ progressBar }></div>
+            <div className="song-details">
+                <i className="fas fa-caret-down"></i>
             </div>
-            <button className="like-unlike unliked"><i className="far fa-heart"></i></button>
         </div>
         // <div className="music-player">
         //     <div className="navigation">

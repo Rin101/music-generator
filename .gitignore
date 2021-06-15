@@ -3,6 +3,7 @@
 /assets
 # notes
 *.txt
+Screenshot.png
 # dependencies
 /node_modules
 /.pnp
