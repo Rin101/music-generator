@@ -104,7 +104,7 @@
 
 .song-details-container {
   height: 30px;
-  width: 100px;
+  min-width: 100px;
   margin: 25px 0;
   border-radius: 5px;
   /* box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3); */
@@ -112,7 +112,7 @@
 
 .details-i-container {
   height: 30px;
-  width: 100px;
+  min-width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,9 +125,14 @@
 
 .song-details {
   display: none;
+  background: linear-gradient(to bottom right, var(--two), var(--three));
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .song-details p {
+  color: var(--lightgray);
+
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
