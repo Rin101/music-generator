@@ -7,7 +7,7 @@ const setDefault = (settings) => {
     "majorScale", "minorScale", "majorPentatonic", "minorPentatonic", "harmonicMinor", "harmonicMajor",
     "majorScale", "minorScale"
   ]
-  const keys = ["C", "C#", "D", "D#", "E", "F", "G", "G#", "A", "A#", "B", "B#"]
+  const keys = ["C", "C#", "D", "D#", "E", "F", "G", "G#", "A", "A#", "B"]
   
   const scale = settings["scale"] == "None" ? scales[Math.floor(Math.random() * scales.length)] : settings["scale"]
   const key = settings["key"] == "None" ? keys[Math.floor(Math.random() * keys.length)] : settings["key"]

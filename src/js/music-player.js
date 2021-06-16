@@ -139,9 +139,9 @@ export function MusicPlayer(props) {
             detailsIcon.current.querySelector("i.fas").classList.remove("fa-caret-up")
             detailsIcon.current.querySelector("i.fas").classList.add("fa-caret-down")
             detailsIcon.current.classList.remove("showing")
-            setInterval(() => {
+            // setInterval(() => {
                 details.current.style.display = "none"
-            }, 300)
+            // }, 300)
         } else {
             detailsIcon.current.querySelector("i.fas").classList.remove("fa-caret-down")
             detailsIcon.current.querySelector("i.fas").classList.add("fa-caret-up")
@@ -172,6 +172,9 @@ export function MusicPlayer(props) {
                     <p>scale: {props.song["details"]["scale"]}</p>
                     <p>key: {props.song["details"]["key"]}</p>
                 </div>
+            </div>
+            <div className="player-menu">
+                <div className="toggle-player-menu"><i className="fas fa-ellipsis-v"></i></div>
             </div>
         </div>
         // <div className="music-player">
