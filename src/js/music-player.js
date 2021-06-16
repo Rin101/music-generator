@@ -138,8 +138,10 @@ export function MusicPlayer(props) {
         if (isShown) {
             detailsIcon.current.querySelector("i.fas").classList.remove("fa-caret-up")
             detailsIcon.current.querySelector("i.fas").classList.add("fa-caret-down")
-            details.current.style.display = "none"
             detailsIcon.current.classList.remove("showing")
+            setInterval(() => {
+                details.current.style.display = "none"
+            }, 300)
         } else {
             detailsIcon.current.querySelector("i.fas").classList.remove("fa-caret-down")
             detailsIcon.current.querySelector("i.fas").classList.add("fa-caret-up")
