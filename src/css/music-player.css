@@ -102,19 +102,38 @@
 
 /* ========================================- */
 
-.song-details {
+.song-details-container {
   height: 30px;
   width: 100px;
   margin: 25px 0;
   border-radius: 5px;
   /* box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3); */
+}
+
+.details-i-container {
+  height: 30px;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-.song-details i {
+.song-details-container i {
   color: var(--three);
+}
+
+.song-details {
+  display: none;
+}
+
+.song-details p {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* ============================================- */

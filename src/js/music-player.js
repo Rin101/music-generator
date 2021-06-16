@@ -8,6 +8,8 @@ export function MusicPlayer(props) {
 
     const playpause = useRef()
     const item = useRef()
+    const detailsIcon = useRef()
+    const details = useRef()
     // create these functions in different js file
     const progressContainer = useRef()
     const progressBar = useRef()
@@ -129,6 +131,22 @@ export function MusicPlayer(props) {
     // // Time of song
     // audio.addEventListener('timeupdate',DurTime);
 
+    // ======================================================
+
+    const toggleDetails = () => {
+        const isShown = detailsIcon.current.classList.contains('showing')
+        if (isShown) {
+            detailsIcon.current.querySelector("i.fas").classList.remove("fa-caret-up")
+            detailsIcon.current.querySelector("i.fas").classList.add("fa-caret-down")
+            details.current.style.display = "none"
+            detailsIcon.current.classList.remove("showing")
+        } else {
+            detailsIcon.current.querySelector("i.fas").classList.remove("fa-caret-down")
+            detailsIcon.current.querySelector("i.fas").classList.add("fa-caret-up")
+            details.current.style.display = "block"
+            detailsIcon.current.classList.add("showing")
+        }
+    }
 
     return (
         <div className="music-player-item" ref={ item }>
@@ -144,8 +162,14 @@ export function MusicPlayer(props) {
                 </div>
                 <button className="like-unlike unliked"><i className="far fa-heart"></i></button>
             </div>
-            <div className="song-details">
-                <i className="fas fa-caret-down"></i>
+            <div className="song-details-container">
+                <div className="details-i-container" ref={ detailsIcon } onClick={()=> toggleDetails()}>
+                    <i className="fas fa-caret-down"></i>
+                </div>
+                <div ref={ details } className="song-details">
+                    <p>scale: {props.song["details"]["scale"]}</p>
+                    <p>key: {props.song["details"]["key"]}</p>
+                </div>
             </div>
         </div>
         // <div className="music-player">

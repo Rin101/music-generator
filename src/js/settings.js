@@ -64,8 +64,8 @@ export function Settings (props) {
                     <option value="minorScale">Minor</option>
                     <option value="majorPentatonic">Major Pentatonic</option>
                     <option value="minorPentatonic">Minor Pentatonic</option>
-                    <option value="harmonicMinor">Harmonic Minor</option>
                     <option value="harmonicMajor">Harmonic Major</option>
+                    <option value="harmonicMinor">Harmonic Minor</option>
                 </select>
                 <label>key : </label>
                 <select ref={ selectKey } name="key" id="key">

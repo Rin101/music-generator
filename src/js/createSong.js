@@ -3,7 +3,10 @@ import { getScale } from './scales.js';
 
 const setDefault = (settings) => {
 
-  const scales = ["majorScale"]
+  const scales = [
+    "majorScale", "minorScale", "majorPentatonic", "minorPentatonic", "harmonicMinor", "harmonicMajor",
+    "majorScale", "minorScale"
+  ]
   const keys = ["C", "C#", "D", "D#", "E", "F", "G", "G#", "A", "A#", "B", "B#"]
   
   const scale = settings["scale"] == "None" ? scales[Math.floor(Math.random() * scales.length)] : settings["scale"]
@@ -32,7 +35,7 @@ export function createSong(settings) {
     song.push([notesArr[Math.floor(Math.random() * notesArr.length)], l])
   })
 
-  let res = {"song": song, "bpm": s["bpm"]}
+  let res = {"song": song, "bpm": s["bpm"], "details": {"scale": s["scale"], "key": s["key"]}}
 
   console.log(res)
   return res
