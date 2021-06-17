@@ -10,6 +10,7 @@ export function MusicPlayer(props) {
     const item = useRef()
     const detailsIcon = useRef()
     const details = useRef()
+    const onOffDetails = useRef()
     // create these functions in different js file
     const progressContainer = useRef()
     const progressBar = useRef()
@@ -139,6 +140,9 @@ export function MusicPlayer(props) {
             detailsIcon.current.querySelector("i.fas").classList.remove("fa-caret-up")
             detailsIcon.current.querySelector("i.fas").classList.add("fa-caret-down")
             detailsIcon.current.classList.remove("showing")
+            
+            // details.current.style.transform = "translateY(-50%)"
+            // details.current.style.opacity = "0"
             // setInterval(() => {
                 details.current.style.display = "none"
             // }, 300)
@@ -166,6 +170,7 @@ export function MusicPlayer(props) {
             </div>
             <div className="song-details-container">
                 <div className="details-i-container" ref={ detailsIcon } onClick={()=> toggleDetails()}>
+                    <input ref={ onOffDetails } type="checkbox" className="on-off-details" />
                     <i className="fas fa-caret-down"></i>
                 </div>
                 <div ref={ details } className="song-details">

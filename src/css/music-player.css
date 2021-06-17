@@ -121,6 +121,13 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  position: relative;
+}
+
+.on-off-details {
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
 .song-details-container i {
@@ -132,7 +139,6 @@
   background: linear-gradient(to bottom right, var(--two), var(--three));
   border-radius: 5px;
   padding: 10px;
-  z-index: -1;
   animation-name: slidein;
   animation-duration: 0.5s;
   animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
@@ -150,9 +156,6 @@
 }
 
 /* ================================================== */
-
-.player-menu {
-}
 
 .toggle-player-menu {
   height: 50px;
