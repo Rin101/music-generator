@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/music-generator/static/css/main.e0b1db0b.chunk.css",
-    "main.js": "/music-generator/static/js/main.8f450915.chunk.js",
-    "main.js.map": "/music-generator/static/js/main.8f450915.chunk.js.map",
+    "main.css": "/music-generator/static/css/main.e16fb996.chunk.css",
+    "main.js": "/music-generator/static/js/main.dc9f8772.chunk.js",
+    "main.js.map": "/music-generator/static/js/main.dc9f8772.chunk.js.map",
     "runtime-main.js": "/music-generator/static/js/runtime-main.91eb1a76.js",
     "runtime-main.js.map": "/music-generator/static/js/runtime-main.91eb1a76.js.map",
     "static/js/2.3ef52d1b.chunk.js": "/music-generator/static/js/2.3ef52d1b.chunk.js",
     "static/js/2.3ef52d1b.chunk.js.map": "/music-generator/static/js/2.3ef52d1b.chunk.js.map",
     "index.html": "/music-generator/index.html",
-    "static/css/main.e0b1db0b.chunk.css.map": "/music-generator/static/css/main.e0b1db0b.chunk.css.map",
+    "static/css/main.e16fb996.chunk.css.map": "/music-generator/static/css/main.e16fb996.chunk.css.map",
     "static/js/2.3ef52d1b.chunk.js.LICENSE.txt": "/music-generator/static/js/2.3ef52d1b.chunk.js.LICENSE.txt",
     "static/media/index.css": "/music-generator/static/media/music-studio.2176135c.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.91eb1a76.js",
     "static/js/2.3ef52d1b.chunk.js",
-    "static/css/main.e0b1db0b.chunk.css",
-    "static/js/main.8f450915.chunk.js"
+    "static/css/main.e16fb996.chunk.css",
+    "static/js/main.dc9f8772.chunk.js"
   ]
 }
