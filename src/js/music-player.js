@@ -179,7 +179,13 @@ export function MusicPlayer(props) {
                 </div>
             </div>
             <div className="player-menu">
-                <div className="toggle-player-menu"><i className="fas fa-ellipsis-v"></i></div>
+                {/* <p>delete button should be shown initially cause its frequently used</p> */}
+                {/* <div className="toggle-player-menu"><i className="fas fa-ellipsis-v"></i></div> */}
+                <div className="player-menu-holder">
+                    <div className="player-menu-item"><i className="far fa-heart"></i></div>
+                    <div className="player-menu-item"><i className="fas fa-trash"></i></div>
+                    <div className="player-menu-item"><i className="fas fa-edit"></i></div>
+                </div>
             </div>
         </div>
         // <div className="music-player">
