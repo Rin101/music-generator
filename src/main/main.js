@@ -2,33 +2,38 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import * as Tone from 'tone';
 //  import from file
-import { createSong } from './createSong';
-import { MusicPlayer } from './music-player'
-import { Settings } from './settings'
+import { createSong } from './generator/createSong';
+import { MusicPlayer } from './music-player/music-player'
+import { Settings } from './js/settings'
+import { SideBar } from "./js/side-bar"
 // material-ui
 import Button from '@material-ui/core/Button'
+// css
+import './css/main.css';
 
-// ---------
 
-export function Generator() {
+export function Main() {
 
-    const [createdSongs, setCreatedList] = useState([])
+    const [createdSongs, setCreatedSongs] = useState([])
     const [customSettings, setCustomSettings] = useState({
-        "length": "4", "scale": "None", "key": "None", "rest": false, "bpm": "None", "selectedNotes": "None"
+        "length": "2", "scale": "random", "key": "random", "rest": false, "bpm": "random", "selectedNotes": "None"
     })
+    const [likedSongs, setLikedSongs] = useState([])
 
 
     const generateSong = (customSettings) => {
         const song = createSong(customSettings)
-        setCreatedList([song, ...createdSongs])
+        setCreatedSongs([song, ...createdSongs])
     }
+
 
     const MusicPlayers = () => {
         if (createdSongs.length > 0) {
             return (
                 createdSongs.map(song => {
                     return (
-                        <MusicPlayer song={song} key={song.song}></MusicPlayer>
+                        <MusicPlayer song={song} createdSongs={createdSongs} setCreatedSongs={setCreatedSongs}
+                        likedSongs={likedSongs} setLikedSongs={setLikedSongs} key={song.song}></MusicPlayer>
             )}))
         } else {
             return (
@@ -41,15 +46,9 @@ export function Generator() {
 
     return (
         <div className="generator">
-            <section className="side-bar">
-                <div className="side-menu-container">
-                    <div className="menu-bar"><i className="fas fa-bars"></i></div>
-                    <div className="side-menu account"><i className="fas fa-user-circle"></i>Account</div>
-                    <div className="side-menu login"><i className="fas fa-sign-in-alt"></i>Login</div>
-                    <div className="side-menu about"><i className="fas fa-building"></i>About</div>
-                    <div className="side-menu faq"><i className="fas fa-question-circle"></i>FAQ</div>
-                </div>
-            </section>
+
+            <SideBar></SideBar>
+            
             <section className="content">
                 <div className="top-image">
                     <h1>Music Genarator AI</h1>

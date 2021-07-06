@@ -106,7 +106,7 @@ button:focus {
 
 .top-image {
   width: 100%;
-  background-image: url("../assets/img/music-studio.jpg");
+  background-image: url("../../assets/img/music-studio.jpg");
   background-size: cover;
   background-position: center;
   height: calc(20vh - 1px);
@@ -121,6 +121,12 @@ button:focus {
 
 .top-image h1 {
   cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .thin-line {

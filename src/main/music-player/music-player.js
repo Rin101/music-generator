@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom';
 import * as Tone from 'tone';
 // material-ui
 import Button from '@material-ui/core/Button'
+// css
+import './test.css';
 
 export function MusicPlayer(props) {
+
+    let song = props.song
 
     const playpause = useRef()
     const item = useRef()
     const detailsIcon = useRef()
     const details = useRef()
     const onOffDetails = useRef()
+    const heart = useRef()
     // create these functions in different js file
     const progressContainer = useRef()
     const progressBar = useRef()
@@ -91,12 +96,8 @@ export function MusicPlayer(props) {
 
     function playPause(song) {
         const isPlaying = playpause.current.classList.contains('playing')
-        if (isPlaying) {
-            pauseSong()
-        }
-        else {
-            playSong(song)
-        }
+        if (isPlaying)  pauseSong() 
+        else  playSong(song) 
     }
 
     // ======= progresss bar===========
@@ -154,19 +155,60 @@ export function MusicPlayer(props) {
         }
     }
 
+    const deleteSong = (song, createdSongs, setCreatedSongs) => {
+        let tmp = [...createdSongs]
+        let index = createdSongs.indexOf(song)
+        if (index > -1) {
+            tmp.splice(index, 1);
+        }
+        setCreatedSongs(tmp)
+    }
+
+    const likeSong = (song, likedSongs, setLikedSongs, heartIcon) => {
+        heartIcon.classList.add("liked")
+        heartIcon.classList.remove("far")
+        heartIcon.classList.add("fas")
+        setLikedSongs([song, ...likedSongs])
+    }
+
+    const unLikeSong = (song, likedSongs, setLikedSongs, heartIcon) => {
+        // if (song["ID"] in likedSongs)
+        let index = likedSongs.indexOf(song)
+        let tmp = [...likedSongs]
+        if (index > -1) {
+            tmp.splice(index, 1);
+        }
+        heartIcon.classList.remove("liked")
+        heartIcon.classList.remove("fas")
+        heartIcon.classList.add("far")
+        setLikedSongs(tmp)
+    }
+
+    const toggleLike = (song, likedSongs, setLikedSongs) => {
+        let liked = heart.current.classList.contains('liked')
+        let heartIcon = heart.current.querySelector('i.fa-heart')
+
+        if (liked) {
+            unLikeSong(song, likedSongs, setLikedSongs, heartIcon)
+            console.log(liked)
+        } else {
+            likeSong(song, likedSongs, setLikedSongs, heartIcon)
+            console.log(liked)
+        }
+        console.log(likedSongs)
+    }
+
     return (
-        <div className="music-player-item" ref={ item }>
-            <div className="music-player">
-                <div className="play-pause-container">
-                    <div className="play-pause" ref={ playpause } onClick={() => playPause(props.song)}>
-                        <button className="play-pause-button"><i className="fas fa-play"></i></button>
-                        {/* <button className="play-pause play" ref={ playpause } onClick={() => ring(props.song)}><i className="fas fa-play"></i></button> */}
-                    </div>
+
+        <div className="music-player-item">
+            <div className="play-pause-container">
+                <div className="play-pause" ref={ playpause } onClick={() => playPause(song)}>
+                    <button className="play-pause-button"><i className="fas fa-play"></i></button>
+                    {/* <button className="play-pause play" ref={ playpause } onClick={() => ring(song)}><i className="fas fa-play"></i></button> */}
                 </div>
-                <div className="progress-container" ref={ progressContainer } onClick={(e) => setProgress(e.target.clientWidth, e.target.offsetX)}>
-                    <div className="progress" ref={ progressBar }></div>
-                </div>
-                <button className="like-unlike unliked"><i className="far fa-heart"></i></button>
+            </div>
+            <div className="progress-container" ref={ progressContainer } onClick={(e) => setProgress(e.target.clientWidth, e.target.offsetX)}>
+                <div className="progress" ref={ progressBar }></div>
             </div>
             <div className="song-details-container">
                 <div className="details-i-container" ref={ detailsIcon } onClick={()=> toggleDetails()}>
@@ -174,32 +216,74 @@ export function MusicPlayer(props) {
                     <i className="fas fa-caret-down"></i>
                 </div>
                 <div ref={ details } className="song-details">
-                    <p>scale: {props.song["details"]["scale"]}</p>
-                    <p>key: {props.song["details"]["key"]}</p>
+                    <p>scale: {song["details"]["scale"]}</p>
+                    <p>key: {song["details"]["key"]}</p>
                 </div>
             </div>
             <div className="player-menu">
                 {/* <p>delete button should be shown initially cause its frequently used</p> */}
                 {/* <div className="toggle-player-menu"><i className="fas fa-ellipsis-v"></i></div> */}
                 <div className="player-menu-holder">
-                    <div className="player-menu-item"><i className="far fa-heart"></i></div>
-                    <div className="player-menu-item"><i className="fas fa-trash"></i></div>
+                    <div className="player-menu-item like-unlike" ref={heart} onClick={ () => toggleLike(song, props.likedSongs, props.setLikedSongs) }><i className="far fa-heart"></i></div>
+                    <div className="player-menu-item" onClick={ () => deleteSong(song, props.createdSongs, props.setCreatedSongs) }><i className="fas fa-trash"></i></div>
                     <div className="player-menu-item"><i className="fas fa-edit"></i></div>
                 </div>
             </div>
         </div>
-        // <div className="music-player">
-        //     <div className="navigation">
-        //         <button id="prev" className="action-btn"><i className="fas fa-backward"></i></button>
-        //         <button id="play" className="play-pause play action-btn action-btn-big" onClick={() => ring(props.song)}><i className="fas fa-play"></i></button>
-        //         {/* <i class="fas fa-pause"></i> */}
-        //         <button id="next" className="action-btn"><i className="fas fa-forward" onClick={() => checkSound()}></i></button>
+
+
+
+
+
+        // ====================================--
+        // <div className="music-player-item">
+        //     <div className="music-player-wrapper" ref={ item }>
+        //         <div className="music-player">
+        //             <div className="play-pause-container">
+        //                 <div className="play-pause" ref={ playpause } onClick={() => playPause(song)}>
+        //                     <button className="play-pause-button"><i className="fas fa-play"></i></button>
+        //                     {/* <button className="play-pause play" ref={ playpause } onClick={() => ring(song)}><i className="fas fa-play"></i></button> */}
+        //                 </div>
+        //             </div>
+        //             <div className="progress-container" ref={ progressContainer } onClick={(e) => setProgress(e.target.clientWidth, e.target.offsetX)}>
+        //                 <div className="progress" ref={ progressBar }></div>
+        //             </div>
+        //             <button className="like-unlike unliked"><i className="far fa-heart"></i></button>
+        //         </div>
+        //         <div className="song-details-container">
+        //             <div className="details-i-container" ref={ detailsIcon } onClick={()=> toggleDetails()}>
+        //                 <input ref={ onOffDetails } type="checkbox" className="on-off-details" />
+        //                 <i className="fas fa-caret-down"></i>
+        //             </div>
+        //             <div ref={ details } className="song-details">
+        //                 <p>scale: {song["details"]["scale"]}</p>
+        //                 <p>key: {song["details"]["key"]}</p>
+        //             </div>
+        //         </div>
         //     </div>
-        //     <div className="progress-container">
-        //         <div className="progress" ref={ progressBar }></div>
+        //     <div className="player-menu">
+        //         {/* <p>delete button should be shown initially cause its frequently used</p> */}
+        //         {/* <div className="toggle-player-menu"><i className="fas fa-ellipsis-v"></i></div> */}
+        //         <div className="player-menu-holder">
+        //             <div className="player-menu-item" ref={heart} onClick={ () => toggleLike(song, props.likedSongs, props.setLikedSongs) }><i className="far fa-heart"></i></div>
+        //             <div className="player-menu-item" onClick={ () => deleteSong(song, props.createdSongs, props.setCreatedSongs) }><i className="fas fa-trash"></i></div>
+        //             <div className="player-menu-item"><i className="fas fa-edit"></i></div>
+        //         </div>
         //     </div>
-        //     <button className="like-unlike unliked"><i className="far fa-heart"></i></button>
-        //     {/* <i class="fas fa-heart"></i> */}
         // </div>
+
+        // // <div className="music-player">
+        // //     <div className="navigation">
+        // //         <button id="prev" className="action-btn"><i className="fas fa-backward"></i></button>
+        // //         <button id="play" className="play-pause play action-btn action-btn-big" onClick={() => ring(song)}><i className="fas fa-play"></i></button>
+        // //         {/* <i class="fas fa-pause"></i> */}
+        // //         <button id="next" className="action-btn"><i className="fas fa-forward" onClick={() => checkSound()}></i></button>
+        // //     </div>
+        // //     <div className="progress-container">
+        // //         <div className="progress" ref={ progressBar }></div>
+        // //     </div>
+        // //     <button className="like-unlike unliked"><i className="far fa-heart"></i></button>
+        // //     {/* <i class="fas fa-heart"></i> */}
+        // // </div>
     )
 }

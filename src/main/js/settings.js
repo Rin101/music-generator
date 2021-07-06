@@ -15,10 +15,10 @@ export function Settings (props) {
     const applySettings = () => {
         let list = [selectScale.current.value, selectKey.current.value]
 
-        let defaultValue = ["None", "None"]
+        let defaultValue = ["random", "random"]
         let i = 0
         while (i < list.length) {
-            list[i] = (list[i] != "None") ? list[i] : defaultValue[i]
+            list[i] = (list[i] != "random") ? list[i] : defaultValue[i]
             i += 1
         }
 
@@ -59,7 +59,8 @@ export function Settings (props) {
             <div ref={selectors} className="selectors" onMouseMove={(e) => cursor(e)} onMouseLeave={() => hideCursor()}>
                 <label>scale : </label>
                 <select ref={ selectScale } name="scale" id="scale">
-                    <option value="None">None</option>
+                    <option value="random">random</option>
+                    <option value="none">None</option>
                     <option value="majorScale">Major</option>
                     <option value="minorScale">Minor</option>
                     <option value="majorPentatonic">Major Pentatonic</option>
@@ -69,7 +70,7 @@ export function Settings (props) {
                 </select>
                 <label>key : </label>
                 <select ref={ selectKey } name="key" id="key">
-                    <option value="None">None</option>
+                    <option value="random">random</option>
                     <option value="C">C</option>
                     <option value="C#">C#</option>
                     <option value="D">D</option>

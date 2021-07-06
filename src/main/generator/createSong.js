@@ -9,9 +9,9 @@ const setDefault = (settings) => {
   ]
   const keys = ["C", "C#", "D", "D#", "E", "F", "G", "G#", "A", "A#", "B"]
   
-  const scale = settings["scale"] == "None" ? scales[Math.floor(Math.random() * scales.length)] : settings["scale"]
-  const key = settings["key"] == "None" ? keys[Math.floor(Math.random() * keys.length)] : settings["key"]
-  const bpm = settings["bpm"] == "None" ? Math.floor(Math.random() * (150 - 70) + 70) : settings["bpm"]
+  const scale = settings["scale"] == "random" ? scales[Math.floor(Math.random() * scales.length)] : settings["scale"]
+  const key = settings["key"] == "random" ? keys[Math.floor(Math.random() * keys.length)] : settings["key"]
+  const bpm = settings["bpm"] == "random" ? Math.floor(Math.random() * (150 - 70) + 70) : settings["bpm"]
   const selectedNotes = settings["selectedNotes"] == "None" ? null : settings["selectedNotes"]
   const rest = settings["rest"]
   const length = settings["length"]
@@ -34,6 +34,8 @@ export function createSong(settings) {
   lengthArr.forEach(l => {
     song.push([notesArr[Math.floor(Math.random() * notesArr.length)], l])
   })
+
+  // const ID = date()*Ddfadmfam*Dfadgin*dgnodadonaodn
 
   let res = {"song": song, "bpm": s["bpm"], "details": {"scale": s["scale"], "key": s["key"]}}
 
