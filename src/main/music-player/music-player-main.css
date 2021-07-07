@@ -16,17 +16,26 @@
 }
 
 .music-player-item {
-  height: 80px;
+  height: 70px;
   /* width: 200px; */
   margin: 10px 0;
-  padding: 30px;
-  border-top: solid 1.2px var(--slightgray);
-  border-bottom: solid 1.2px var(--slightgray);
+  padding: 10px;
+  border-top: solid 1.5px var(--slightgray);
+  border-bottom: solid 1.5px var(--slightgray);
   display: flex;
   align-items: center;
 }
 
 /* ==================================== */
+
+.song-number {
+  color: var(--slightgray);
+  margin-right: 10px;
+  font-size: 15px;
+  width: 25px;
+}
+
+/* =============================--- */
 
 .play-pause-container {
   margin: 0 20px 0 0;
@@ -93,6 +102,7 @@
   height: 50px;
   min-width: 100px;
   border-radius: 5px;
+  z-index: 10;
 }
 
 .details-i-container {

@@ -45,38 +45,38 @@ export function Main() {
     }
 
     return (
-        <div className="generator">
-
-            <SideBar></SideBar>
-            
-            <section className="content">
-                <div className="top-image">
-                    <h1>Music Genarator AI</h1>
+        <div className="main">
+            <div className="top-menu">
+                <h1>Music Genarator AI</h1>
+                <div className="top-menu-items">
+                    <div className="top-menu-item account"><i className="fas fa-user-circle"></i>Account</div>
+                    <div className="top-menu-item login"><i className="fas fa-sign-in-alt"></i>Login</div>
                 </div>
-                <div className="thin-line"></div>
-                <div className="music">
-                    <div className="laboratory">
-                        <div className="generator-button-container">
-                            <Button variant="contained" className="generator-button" onClick={() => generateSong(customSettings)}>
-                                GENERATE
-                            </Button>
-                        </div>
-                        {/* <div className="generator-button-container" onClick={() => generateSong()}>
-                            <Button variant="contained" className="generator-button2">
+            </div>
+            <div className="thin-line"></div>
+            <div className="music">
+                <SideBar></SideBar>
+                <div className="laboratory">
+                    <div className="generator-button-container">
+                        <Button variant="contained" className="generator-button" onClick={() => generateSong(customSettings)}>
                             GENERATE
-                            </Button>
-                        </div> */}
-
-                        <div className="settings-container">
-                            <Settings customSettings={customSettings} setCustomSettings={setCustomSettings}></Settings>
-                        </div>
+                        </Button>
                     </div>
+                    {/* <div className="generator-button-container" onClick={() => generateSong()}>
+                        <Button variant="contained" className="generator-button2">
+                        GENERATE
+                        </Button>
+                    </div> */}
 
-                    <div className="music-player-container">
-                        <MusicPlayers></MusicPlayers>
+                    <div className="settings-container">
+                        <Settings customSettings={customSettings} setCustomSettings={setCustomSettings}></Settings>
                     </div>
                 </div>
-            </section>
+
+                <div className="music-player-container">
+                    <MusicPlayers></MusicPlayers>
+                </div>
+            </div>
         </div>
     )
 

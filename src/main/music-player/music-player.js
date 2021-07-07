@@ -4,7 +4,7 @@ import * as Tone from 'tone';
 // material-ui
 import Button from '@material-ui/core/Button'
 // css
-import './test.css';
+import './music-player-main.css';
 
 export function MusicPlayer(props) {
 
@@ -201,6 +201,8 @@ export function MusicPlayer(props) {
     return (
 
         <div className="music-player-item">
+            <div class="song-number"><p>{props.createdSongs.length  - props.createdSongs.indexOf(props.song)}.</p></div>
+            <div class="song-name"></div>
             <div className="play-pause-container">
                 <div className="play-pause" ref={ playpause } onClick={() => playPause(song)}>
                     <button className="play-pause-button"><i className="fas fa-play"></i></button>
