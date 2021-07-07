@@ -55,6 +55,7 @@ export function Settings (props) {
             <div ref={ mouseCursor } className="cursor"></div>
             <div className="setting-card" ref={settingCard} onMouseMove={(e) => cursor(e)} onMouseLeave={() => hideCursor()} onClick={() => showSelectors()}>
                 <i className="fas fa-cog"></i>
+                <p><span>Login</span> or <span>Sign up for Free</span> to unlock custom settings!</p>
             </div>
             <div ref={selectors} className="selectors" onMouseMove={(e) => cursor(e)} onMouseLeave={() => hideCursor()}>
                 <label>scale : </label>

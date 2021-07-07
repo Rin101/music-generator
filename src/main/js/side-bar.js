@@ -33,7 +33,7 @@ export function SideBar () {
 
     return(
         <section className="side-bar" ref={sideBar}>
-            <div className="side-menu account">Settings</div>
+            <div className="side-menu settings">Settings</div>
             <div className="side-menu login">Editor</div>
             <div className="side-menu about">Tones</div>
             <div className="side-menu faq">Liked Songs</div>
