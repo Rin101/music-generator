@@ -201,8 +201,8 @@ export function MusicPlayer(props) {
     return (
 
         <div className="music-player-item">
-            <div class="song-number"><p>{props.createdSongs.length  - props.createdSongs.indexOf(props.song)}.</p></div>
-            <div class="song-name"></div>
+            <div className="song-number"><p>{props.createdSongs.length  - props.createdSongs.indexOf(props.song)}.</p></div>
+            <div className="song-name"></div>
             <div className="play-pause-container">
                 <div className="play-pause" ref={ playpause } onClick={() => playPause(song)}>
                     <button className="play-pause-button"><i className="fas fa-play"></i></button>

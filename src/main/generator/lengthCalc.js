@@ -1,6 +1,6 @@
 
 export const lengthCalc = (barCount) => {
-    const lengths = [1/2, 1, 2, 1+1/2, 1/2, 1, 1/4]
+    const lengths = [1, 1/2, 1, 2, 1+1/2, 1/2, 1, 1/4]
     // const lengths = [8, 4, 3, 1, 2, 1, 1+1/2, 1/2, 1/4]
     const lengthsdic = {"1n":4}
 

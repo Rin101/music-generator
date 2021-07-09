@@ -4,8 +4,7 @@ import * as Tone from 'tone';
 //  import from file
 import { createSong } from './generator/createSong';
 import { MusicPlayer } from './music-player/music-player'
-import { Settings } from './js/settings'
-import { SideBar } from "./js/side-bar"
+import { Laboratory } from "./js/laboratory"
 // material-ui
 import Button from '@material-ui/core/Button'
 // css
@@ -16,7 +15,7 @@ export function Main() {
 
     const [createdSongs, setCreatedSongs] = useState([])
     const [customSettings, setCustomSettings] = useState({
-        "length": "2", "scale": "random", "key": "random", "rest": false, "bpm": "random", "selectedNotes": "None"
+        "length": "4", "scale": "random", "key": "random", "rest": false, "bpm": "random", "selectedNotes": "None"
     })
     const [likedSongs, setLikedSongs] = useState([])
 
@@ -55,11 +54,9 @@ export function Main() {
             </div>
             <div className="thin-line"></div>
             <div className="music">
-                <SideBar></SideBar>
-                <div className="laboratory">
-                    <div className="settings-container">
-                        <Settings customSettings={customSettings} setCustomSettings={setCustomSettings}></Settings>
-                    </div>
+                <div className="laboratory-container">
+                    <Laboratory customSettings={customSettings} setCustomSettings={setCustomSettings}>
+                    </Laboratory>
                 </div>
 
                 <div className="music-player-container">
