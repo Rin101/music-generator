@@ -1,0 +1,56 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* color palette */
+:root {
+  /* material-ui */
+  --primary: #1976d2;
+  --secondary: #dc004e;
+  /*  */
+  --one: rgb(253, 123, 57);
+  --two: rgb(238, 114, 60);
+  --three: rgb(249, 150, 51);
+  --four: rgb(48, 34, 33);
+  /*  */
+  --lightgray: rgb(250, 252, 254);
+}
+
+/* ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--lightgray);
+}
+
+button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* =========================================- */
+
+.graph {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  background: gray;
+  flex-direction: column;
+}
+
+canvas {
+  background: white;
+  border: solid 2px gray;
+}

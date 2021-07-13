@@ -68,8 +68,10 @@ export function MusicPlayer(props) {
         playpause.current.querySelector("i.fas").classList.remove("fa-play")
         playpause.current.querySelector("i.fas").classList.add("fa-pause")
 
-        let bpm = song["bpm"]
+        // adjust bpm to length object
+        let bpm = song["bpm"]/4
         Tone.Transport.bpm.value = bpm
+
         let i = 0
         let timeSum = 0
         while (i < song["song"].length && playpause.current.classList.contains("playing")) {

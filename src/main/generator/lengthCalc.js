@@ -1,8 +1,11 @@
+import { shuffle } from "../js/general"
+
 
 export const lengthCalc = (barCount) => {
-    const lengths = [1, 1/2, 1, 2, 1+1/2, 1/2, 1, 1/4]
-    // const lengths = [8, 4, 3, 1, 2, 1, 1+1/2, 1/2, 1/4]
-    const lengthsdic = {"1n":4}
+    // const lengths = [1, 1/2, 1/4, 1/8, 1/2+1/4, 1/4+1/8]
+    // const lengthsInFrequency = [1/8, 1/4, 1/4+1/8, 1/2, 1/2+1/4, 1]
+    let lengths = [1/8, 1/4, 1/4+1/8, 1/2, 1/2+1/4, 1]
+
 
     // explanation
     // 8*x + 4*y + 2*z = 8
@@ -11,7 +14,7 @@ export const lengthCalc = (barCount) => {
     // 2*z = 8 - 4*y -> 2*z = 4 -> z=2 -> x=0, y=1, z=2 -> {[y, z, z]} -> randomSort([y, z, z]) -> [z, y, z]
     // for num in [z, y, z] -> pick each note for num -> {A5:z, G#4:y, C5:z} (y->whole note, z->quarter note)
 
-    const totalLength = barCount*4
+    const totalLength = barCount
 
     let finalList = []
 
@@ -42,19 +45,6 @@ export const lengthCalc = (barCount) => {
     }
 
     sumRemainder(finalList)
-
-
-    function shuffle(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
-        while (0 !== currentIndex) {
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-        }
-        return array;
-      }
 
     return shuffle(finalList)
 }

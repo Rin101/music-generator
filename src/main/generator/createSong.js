@@ -1,5 +1,6 @@
-import { lengthCalc} from './lengthCalc.js';
+import { lengthCalc } from './lengthCalc.js';
 import { getScale } from './scales.js';
+import { getRandom } from '../js/general.js';
 
 const setDefault = (settings) => {
 
@@ -11,7 +12,7 @@ const setDefault = (settings) => {
   
   const scale = settings["scale"] == "random" ? scales[Math.floor(Math.random() * scales.length)] : settings["scale"]
   const key = settings["key"] == "random" ? keys[Math.floor(Math.random() * keys.length)] : settings["key"]
-  const bpm = settings["bpm"] == "random" ? Math.floor(Math.random() * (150 - 70) + 70) : settings["bpm"]
+  const bpm = settings["bpm"] == "random" ? Math.floor(Math.random() * (130 - 90) + 90) : settings["bpm"]
   const selectedNotes = settings["selectedNotes"] == "None" ? null : settings["selectedNotes"]
   const rest = settings["rest"]
   const length = settings["length"]
@@ -26,8 +27,11 @@ export function createSong(settings) {
   let song = []
 
   let lengthArr = lengthCalc(s["length"])
+  // set unique notes
+  let achivedScale = getRandom(getScale(s["scale"], s["key"]), 5)
   let notesArr = 
-    s["selectedNotes"] || getScale(s["scale"], s["key"])
+    s["selectedNotes"] || achivedScale
+
 
   s["rest"] ? notesArr.push("rest") :
 

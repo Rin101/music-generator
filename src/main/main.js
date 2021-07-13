@@ -5,6 +5,9 @@ import * as Tone from 'tone';
 import { createSong } from './generator/createSong';
 import { MusicPlayer } from './music-player/music-player'
 import { Laboratory } from "./js/laboratory"
+import { Graph } from './js/graph';
+import { convertToIndex } from './js/general';
+import { TestGraphs } from './generator/analyze/seeGraphs';
 // material-ui
 import Button from '@material-ui/core/Button'
 // css
@@ -14,6 +17,7 @@ import './css/main.css';
 export function Main() {
 
     const [createdSongs, setCreatedSongs] = useState([])
+
     const [customSettings, setCustomSettings] = useState({
         "length": "4", "scale": "random", "key": "random", "rest": false, "bpm": "random", "selectedNotes": "None"
     })
@@ -73,6 +77,8 @@ export function Main() {
                     </div> */}
                 </div>
             </div>
+            <Graph songs={createdSongs}></Graph>
+            <TestGraphs></TestGraphs>
         </div>
     )
 

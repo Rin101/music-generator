@@ -24,7 +24,7 @@ const scales = {
 
 // ex: getScale("majorScale", "C", [2, 4])
     
-export function getScale(scale, key, noteRange = [3, 4]) {
+export function getScale(scale, key, noteRange = [3, 5]) {
 
     let res = []
     const root = key + noteRange[0]
